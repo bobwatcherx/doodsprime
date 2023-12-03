@@ -23,7 +23,7 @@
               <a class="btn btn-danger mt-3" 
               target="blank"
               style="width:100%"
-              href="https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://9xbuddy.xyz/process?url=${data.download_url}" target="_blank">Download Bokep Disini</a>
+              href="https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://9xbud.com/${data.download_url}" target="_blank">Download Bokep Disini</a>
               <p style="color:red;font-weight=bold">
                 Lewatin Iklan nya kalo mau download bokep bro
               </p>
