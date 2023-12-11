@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>List Tonton Nanti</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+</head>
+<body>
+  <div class="m-3" style="display: flex; justify-content: space-between;">
+    <a href="index.html" class="btn btn-primary">Kembali</a>
+    <button class="btn btn-danger" onclick="hapusSemuaTontonan()">Hapus Semua Tontonan Nanti</button>
+  </div>
+
+  <div class="container mt-3" id="watchLaterList">
+    <!-- Watch later list will be displayed here -->
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UoYfb46sH1Ic3LGbJI7tJ7fR4NoytU5Jh9Q2U5ycbfx6pTnFkgKpK99cRJ2O8n1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <!-- Your custom JavaScript file -->
+  <script>
+    // Function to display the watch later list
+function displayWatchLaterList() {
+  const watchLaterListContainer = document.getElementById('watchLaterList');
+  watchLaterListContainer.innerHTML = ''; // Clear existing content
+
+  // Retrieve the watch later list from localStorage
+  const listTonton = JSON.parse(localStorage.getItem('list_tonton')) || [];
+
+  if (listTonton.length === 0) {
+    watchLaterListContainer.innerHTML = '<p>Belum ada video tonton nanti disini. lu tambahin dulu nanti bakalan ada disini</p>';
+  } else {
+     const reversedList = listTonton.slice().reverse();
+
+    // Display each item as a card
+   reversedList.forEach(item => {
+      const card = createWatchLaterCard(item);
+      watchLaterListContainer.appendChild(card);
+    });
+  }
+}
+
+// Function to create a card for each watch later item
+function createWatchLaterCard(item) {
+
+  const card = document.createElement('div');
+  card.className = 'card m-2';
+  card.innerHTML = `
+
+    <img src="${item.image}" class="card-img-top" alt="${item.fileCode}">
+    <div class="card-body">
+      <h5 class="card-title">${item.title}</h5>
+      <p class="card-text">ditambahin pada : ${formatDate(item.created)}</p>
+      <div>
+        <a href="/player.html?id=${item.filecode}"
+        class="btn btn-success"
+        >nonton Bokep</a>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+// Function to format the date as "22 Mei 2023 09:20"
+function formatDate(dateString) {
+  const options = { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' };
+  const formattedDate = new Date(dateString).toLocaleDateString('id-ID', options);
+  return formattedDate;
+}
+
+// Function to handle the "Hapus Semua Tontonan Nanti" button click
+function hapusSemuaTontonan() {
+  // Clear the watch later list in localStorage
+  localStorage.removeItem('list_tonton');
+
+  // Display a SweetAlert2 popup to inform the user
+  Swal.fire({
+    icon: 'success',
+    title: 'Semua Tontonan Nanti telah dihapus!',
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+  });
+
+  // Update the displayed watch later list
+  displayWatchLaterList();
+}
+
+// Call the function to display the watch later list when the page loads
+document.addEventListener('DOMContentLoaded', displayWatchLaterList);
+  </script>
+</body>
+</html>

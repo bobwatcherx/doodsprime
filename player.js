@@ -34,6 +34,34 @@
       })
       .catch(error => console.error('Error:', error));
 
+function handleTontonNantiClick(fileCode, singleImg,title) {
+  // Get existing list from localStorage or initialize an empty array
+  const listTonton = JSON.parse(localStorage.getItem('list_tonton')) || [];
+
+  // Create a new item to append to the list
+  const newItem = {
+    title:title,
+    filecode:fileCode,
+    image: singleImg,
+    created: new Date().toISOString(), // Store the current date and time
+  };
+
+  // Append the new item to the list
+  listTonton.push(newItem);
+
+  // Save the updated list to localStorage
+  localStorage.setItem('list_tonton', JSON.stringify(listTonton));
+
+  // Display a SweetAlert2 popup to inform the user
+  Swal.fire({
+    icon: 'success',
+    title: 'Berhasil ditambahkan ke TONTON NANTI',
+    showConfirmButton: true,
+  });
+}
+
+
+
     // RELATED
     function fetchRelated() {
   document.getElementById('loading').style.display = 'block';
@@ -67,6 +95,10 @@
               </a>
             </div>
           </a>
+          <button class="btn btn-primary" style="width:100%"
+            onclick="handleTontonNantiClick('${item.file_code}', '${item.single_img}','${item.title}')">
+            Tonton Bokep ini Nanti
+          </button>
           </div>
         `;
         cardContainer.appendChild(card);
