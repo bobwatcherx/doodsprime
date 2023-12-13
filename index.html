@@ -27,6 +27,20 @@
     .page-item {
       cursor: pointer;
     }
+       .fab {
+        z-index: 10;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
   </style>
 </head>
 <body>
@@ -48,6 +62,9 @@
       </ul>
     </div>
   </nav>
+
+  
+
 
   <div class="container mt-2">
     <div id="loading">
@@ -103,6 +120,29 @@
       <!-- Histats.com  END  -->
     </div>
   </div>
+
+
+<!-- CHAT BOKEP -->
+   <!-- FLOATING BUTTON -->
+      <button class="fab" data-toggle="modal" data-target="#myModal">Obrol <br/> Bokep </button>
+       <!-- Modal -->
+    <div class="modal fade modal-fullscreen " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    >
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Obrolan Bokep</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="height:500px">
+                    <!-- Isi konten modal di sini -->
+                    <iframe src="https://bobwatcherx.github.io/chatbokep/" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 
   <!-- Bootstrap JS, Popper.js, and jQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
