@@ -41,7 +41,7 @@ function generatePagination(totalPages, currentPage) {
 function fetchData(page) {
   document.getElementById('loading').style.display = 'block';
 
-  fetch(`https://testdood.vercel.app/getbyid?fld_id=796957&page=${page}&per_page=40`)
+  fetch(`https://oakdoodserver.deno.dev/getbyid?fld_id=796957&page=${page}&per_page=40`)
     .then(response => response.json())
     .then(data => {
       document.getElementById('loading').style.display = 'none';

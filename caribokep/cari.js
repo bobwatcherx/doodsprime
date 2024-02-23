@@ -8,11 +8,11 @@ function handleSearch() {
   const keyword = inputElement.value;
 
   // Perform search API request
-  fetch(`https://testdood.vercel.app/search?keyword=${keyword}&per_page=100&page=1`)
+  fetch(`https://oakdoodserver.deno.dev/search/videos?key=219725bbkborbourrp2cd4&search_term=${keyword}`)
     .then(response => response.json())
     .then(data => {
       // Handle the search results
-      displaySearchResults(data.results);
+      displaySearchResults(data.result);
     })
     .catch(error => {
       console.error('Error:', error);

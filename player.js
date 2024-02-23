@@ -1,29 +1,19 @@
  const urlParams = new URLSearchParams(window.location.search);
     const fileId = urlParams.get('id');
- const loading = document.getElementById('loading');
    const cardContainer = document.getElementById('card-container');
 
-    fetch(`https://testdood.vercel.app/detail?file_code=${fileId}`)
-      .then(response => response.json())
-      .then(data => {
-          loading.style.display = 'none';
-        cardContainer.style.display = 'block';
-
-        const card = document.createElement('div');
+      const card = document.createElement('div');
         card.innerHTML = `
           <div>
-            <iframe src="https://ds2play.com/e/${fileId}" 
+            <iframe src="https://d0000d.com/e/${fileId}" 
             allowfullscreen="true"
             allowscrolling="no"
             frameborder="0" style="width:100%;height: 400px;"></iframe>
             <div class="container">
-            <h5 class="card-title">${data.title}</h5>
-              <p class="card-text">Di tonton: ${data.views}</p>
-              <p class="card-text">Di upload: ${data.uploaded}</p>
               <a class="btn btn-danger mt-3" 
               target="blank"
               style="width:100%"
-              href="https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=${data.download_url}" target="_blank">Download Bokep Disini</a>
+              href="https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://d0000d.com/d/${fileId}" target="_blank">Download Bokep Disini</a>
               <p style="color:red;font-weight=bold">
                 Lewatin Iklan nya kalo mau download bokep bro
               </p>
@@ -31,8 +21,6 @@
           </div>
         `;
         cardContainer.appendChild(card);
-      })
-      .catch(error => console.error('Error:', error));
 
 function handleTontonNantiClick(fileCode, singleImg,title) {
   // Get existing list from localStorage or initialize an empty array
@@ -63,17 +51,19 @@ function handleTontonNantiClick(fileCode, singleImg,title) {
 
 
     // RELATED
-    function fetchRelated() {
-  document.getElementById('loading').style.display = 'block';
-
-  fetch(`https://testdood.vercel.app/random_posts?num_posts=35`)
+  function fetchRelated() {
+  fetch(`https://oakdoodserver.deno.dev/file/list?key=219725bbkborbourrp2cd4&page=1&per_page=66`)
     .then(response => response.json())
     .then(data => {
-      document.getElementById('loading').style.display = 'none';
+      const totalPages = data.result.total_pages;
+      const randomPage = Math.floor(Math.random() * totalPages) + 1; // Generate random page number
+      return fetch(`https://oakdoodserver.deno.dev/file/list?key=219725bbkborbourrp2cd4&page=${randomPage}&per_page=66`);
+    })
+    .then(response => response.json())
+    .then(data => {
       const cardContainer = document.getElementById('related');
       cardContainer.innerHTML = ''; // Clear existing cards
-
-      data.random_posts.forEach(item => {
+      data.result.files.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card col-lg-4 col-md-3 col-sm-12 ';
         card.innerHTML = `
@@ -103,13 +93,12 @@ function handleTontonNantiClick(fileCode, singleImg,title) {
         `;
         cardContainer.appendChild(card);
       });
-
     })
     .catch(error => {
       console.error('Error:', error);
       document.getElementById('loading').innerHTML = 'Error loading data.';
-   
       document.getElementById('loading').innerHTML = 'Error loading data.';
     });
 }
+
 fetchRelated()

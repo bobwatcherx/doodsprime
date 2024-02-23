@@ -64,19 +64,23 @@ function handleTontonNantiClick(fileCode, singleImg,title) {
 }
 
 
+// Function to fetch data based on random page
+function fetchRandomData(totalPages) {
+  const randomPage = Math.floor(Math.random() * totalPages) + 1; // Generate random page number
+  fetchData(randomPage);
+}
 
 // Function to fetch data based on page
 function fetchData(page) {
   document.getElementById('loading').style.display = 'block';
 
-  fetch(`https://testdood.vercel.app/posts?page=${page}&per_page=40`)
+  fetch(`https://oakdoodserver.deno.dev/file/list?key=219725bbkborbourrp2cd4&page=${page}&per_page=40`)
     .then(response => response.json())
     .then(data => {
       document.getElementById('loading').style.display = 'none';
       const cardContainer = document.getElementById('card-container');
       cardContainer.innerHTML = ''; // Clear existing cards
-
-      data.data.forEach(item => {
+      data.result.files.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card shadow col-lg-4 col-md-3 col-sm-12';
         card.innerHTML = `
@@ -108,7 +112,7 @@ function fetchData(page) {
         cardContainer.appendChild(card);
       });
 
-      generatePagination(data.total_pages, page);
+      generatePagination(data.result.total_pages, page);
     })
     .catch(error => {
       console.error('Error:', error);
@@ -119,5 +123,15 @@ function fetchData(page) {
     });
 }
 
-// Initial data fetch for page 1
-fetchData(1);
+// Initial data fetch
+fetch(`https://oakdoodserver.deno.dev/file/list?key=219725bbkborbourrp2cd4&page=1&per_page=40`)
+  .then(response => response.json())
+  .then(data => {
+    const totalPages = data.result.total_pages;
+    fetchRandomData(totalPages); // Fetch random data after getting total pages
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    document.getElementById('loading').innerHTML = 'Error loading data.';
+  });
+
