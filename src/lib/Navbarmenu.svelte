@@ -6,7 +6,7 @@
 class="z-depth-3" 
 >
 	<h5 style="color:white;font-weight: bold;
-	">JAGOAN NEON</h5>
+	">Doods PRIME</h5>
 	
 
 </div>
