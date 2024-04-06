@@ -13,7 +13,7 @@
               <a class="btn btn-danger mt-3" 
               target="blank"
               style="width:100%"
-              href="https://cuty.io/quick?token=3c2f8445e662326c2ebcd8d60&url=https://d0000d.com/d/${fileId}" target="_blank">Download Bokep Disini</a>
+              href="https://cuty.io/quick?token=f4447c43a00a22712337b5dff&url=https://d0000d.com/d/${fileId}" target="_blank">Download Bokep Disini</a>
               <p style="color:red;font-weight=bold">
                 Lewatin Iklan nya kalo mau download bokep bro
               </p>
@@ -52,12 +52,12 @@ function handleTontonNantiClick(fileCode, singleImg,title) {
 
     // RELATED
   function fetchRelated() {
-  fetch(`https://oakdoodserver.deno.dev/file/list?key=219725bbkborbourrp2cd4&page=1&per_page=66`)
+  fetch(`https://detadood-1-a9220092.deta.app/dood_random?key=341300fa7wlho1oybi4s3m&page=1&per_page=100`)
     .then(response => response.json())
     .then(data => {
       const totalPages = data.result.total_pages;
       const randomPage = Math.floor(Math.random() * totalPages) + 1; // Generate random page number
-      return fetch(`https://oakdoodserver.deno.dev/file/list?key=219725bbkborbourrp2cd4&page=${randomPage}&per_page=66`);
+      return fetch(`https://detadood-1-a9220092.deta.app/dood_random?key=341300fa7wlho1oybi4s3m&page=${randomPage}&per_page=100`);
     })
     .then(response => response.json())
     .then(data => {

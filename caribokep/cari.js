@@ -8,7 +8,7 @@ function handleSearch() {
   const keyword = inputElement.value;
 
   // Perform search API request
-  fetch(`https://oakdoodserver.deno.dev/search/videos?key=219725bbkborbourrp2cd4&search_term=${keyword}`)
+  fetch(`https://detadood-1-a9220092.deta.app/dood_cari?key=341300fa7wlho1oybi4s3m&search_term=${keyword}`)
     .then(response => response.json())
     .then(data => {
       // Handle the search results

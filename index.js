@@ -74,7 +74,7 @@ function fetchRandomData(totalPages) {
 function fetchData(page) {
   document.getElementById('loading').style.display = 'block';
 
-  fetch(`https://oakdoodserver.deno.dev/file/list?key=219725bbkborbourrp2cd4&page=${page}&per_page=40`)
+  fetch(`https://detadood-1-a9220092.deta.app/dood_random?key=341300fa7wlho1oybi4s3m&page=${page}&per_page=100`)
     .then(response => response.json())
     .then(data => {
       document.getElementById('loading').style.display = 'none';
@@ -124,7 +124,7 @@ function fetchData(page) {
 }
 
 // Initial data fetch
-fetch(`https://oakdoodserver.deno.dev/file/list?key=219725bbkborbourrp2cd4&page=1&per_page=40`)
+fetch(`https://detadood-1-a9220092.deta.app/dood_random?key=341300fa7wlho1oybi4s3m&page=1&per_page=100`)
   .then(response => response.json())
   .then(data => {
     const totalPages = data.result.total_pages;
